@@ -1,5 +1,6 @@
 let cart = [];
 let total = 0;
+let hasItemsInCart = false;
 
 function addToCart(productName, productPrice) {
     const product = cart.find(item => item.name === productName);
@@ -10,6 +11,7 @@ function addToCart(productName, productPrice) {
     }
     total += productPrice;
     updateCartDisplay();
+    hasItemsInCart = true;
 }
 
 function removeFromCart(productName) {
@@ -38,6 +40,16 @@ function updateCartDisplay() {
 }
 
 function checkout() {
-    document.getElementById('checkout-section').style.display = 'block';
-    updateCartDisplay();  // Ensure form is updated when proceeding to checkout
+    if (hasItemsInCart) {
+        document.getElementById('product-selection').style.display = 'none';
+        document.getElementById('checkout-section').style.display = 'block';
+    } else {
+        alert("Il carrello è vuoto. Si prega di aggiungere almeno un prodotto prima di procedere al checkout.");
+    }
 }
+
+function submitOrder() {
+    // Implementazione della logica di invio dell'ordine
+}
+
+// Initialize product buttons and other stuff...
