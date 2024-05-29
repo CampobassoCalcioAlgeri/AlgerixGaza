@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Initiative</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Charity Initiative</h1>
+        <p>Support our cause by purchasing posters and sticker packs.</p>
+    </header>
+    <section>
+        <h2>Products</h2>
+        <ul>
+            <li>Poster: 5 Euros</li>
+            <li>Sticker Pack: 4 Euros</li>
+            <li>Bundle (Poster + Sticker Pack): 7 Euros</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Order Form</h2>
+        <form action="https://docs.google.com/forms/d/e/1sc720upV5KaXQ8vIhL1A3oKm_QeNVSYte8XgUE50QAs/formResponse" method="POST" target="_self">
+            <label for="name">Nome:</label>
+            <input type="text" name="entry.123456789" id="name" required><br>
+
+            <label for="surname">Cognome:</label>
+            <input type="text" name="entry.987654321" id="surname" required><br>
+
+            <label for="purchase">Che cosa compri?</label>
+            <select name="entry.112233445" id="purchase" required>
+                <option value="Poster Rall mo (quill rusc)">Rall mo (quill rusc)</option>
+                <option value="Poster Israe so cotti I ceci (quill bianc)">Israe so cotti I ceci (quill bianc)</option>
+                <option value="Poster Gaza you will never wolf alone (quill blu)">Gaza you will never wolf alone (quill blu)</option>
+            </select><br>
+
+            <label for="delivery">Domanda consegna:</label>
+            <select name="entry.223344556" id="delivery" required>
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+            </select><br>
+
+            <label for="city">In che città ti trovi?</label>
+            <select name="entry.334455667" id="city" required>
+                <option value="Milano">Milano</option>
+                <option value="Torino">Torino</option>
+                <option value="Roma">Roma</option>
+                <option value="Napoli">Napoli</option>
+            </select><br>
+
+            <label for="payment">Metodo di pagamento:</label>
+            <select name="entry.445566778" id="payment" required>
+                <option value="Contanti">Contanti</option>
+                <option value="Paypal">Paypal</option>
+                <option value="Revolut">Revolut</option>
+                <option value="Satispay">Satispay</option>
+            </select><br>
+
+            <label for="email">Email:</label>
+            <input type="email" name="entry.556677889" id="email" required><br>
+
+            <label for="phone">Telefono:</label>
+            <input type="tel" name="entry.667788990" id="phone" required><br>
+
+            <label for="instagram">Instagram (optional):</label>
+            <input type="text" name="entry.778899001" id="instagram"><br>
+
+            <input type="submit" value="Invia">
+        </form>
+    </section>
+</body>
+</html>
