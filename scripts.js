@@ -33,10 +33,11 @@ function updateCartDisplay() {
         cartList.appendChild(li);
     });
     document.getElementById('total').textContent = total;
+    document.getElementById('items').value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
+    document.getElementById('total-field').value = total;
 }
 
 function checkout() {
     document.getElementById('checkout-section').style.display = 'block';
-    document.getElementById('items').value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
-    document.getElementById('total-field').value = total;
+    updateCartDisplay();  // Ensure form is updated when proceeding to checkout
 }
