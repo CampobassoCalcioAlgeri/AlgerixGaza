@@ -13,49 +13,54 @@
     </header>
     <section>
         <h2>Products</h2>
-        <ul>
-            <li>Poster: 5 Euros</li>
-            <li>Sticker Pack: 4 Euros</li>
-            <li>Bundle (Poster + Sticker Pack): 7 Euros</li>
-        </ul>
+        <div class="products">
+            <div class="product" data-name="Poster 1" data-price="5">
+                <img src="poster1.png" alt="Poster 1">
+                <p>Poster 1: 5 Euro</p>
+                <button onclick="addToCart('Poster 1', 5)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Poster 2" data-price="5">
+                <img src="poster2.png" alt="Poster 2">
+                <p>Poster 2: 5 Euro</p>
+                <button onclick="addToCart('Poster 2', 5)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Poster 3" data-price="5">
+                <img src="poster3.png" alt="Poster 3">
+                <p>Poster 3: 5 Euro</p>
+                <button onclick="addToCart('Poster 3', 5)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Sticker Pack" data-price="4">
+                <img src="stickerpack.jpg" alt="Sticker Pack">
+                <p>Sticker Pack: 4 Euro</p>
+                <button onclick="addToCart('Sticker Pack', 4)">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Bundle" data-price="7">
+                <img src="bundle.jpg" alt="Bundle">
+                <p>Bundle (Poster + Sticker Pack): 7 Euro</p>
+                <button onclick="addToCart('Bundle', 7)">Add to Cart</button>
+            </div>
+        </div>
     </section>
     <section>
+        <h2>Cart</h2>
+        <ul id="cart"></ul>
+        <p>Total: <span id="total">0</span> Euros</p>
+        <button onclick="checkout()">Proceed to Checkout</button>
+    </section>
+    <section id="checkout-section" style="display: none;">
         <h2>Order Form</h2>
-        <form action="https://docs.google.com/forms/d/e/1sc720upV5KaXQ8vIhL1A3oKm_QeNVSYte8XgUE50QAs/formResponse" method="POST" target="_self">
+        <form id="order-form" action="https://docs.google.com/forms/d/e/1sc720upV5KaXQ8vIhL1A3oKm_QeNVSYte8XgUE50QAs/formResponse" method="POST" target="_self">
             <label for="name">Nome:</label>
             <input type="text" name="entry.123456789" id="name" required><br>
 
             <label for="surname">Cognome:</label>
             <input type="text" name="entry.987654321" id="surname" required><br>
 
-            <label for="purchase">Che cosa compri?</label>
-            <select name="entry.112233445" id="purchase" required>
-                <option value="Poster Rall mo (quill rusc)">Rall mo (quill rusc)</option>
-                <option value="Poster Israe so cotti I ceci (quill bianc)">Israe so cotti I ceci (quill bianc)</option>
-                <option value="Poster Gaza you will never wolf alone (quill blu)">Gaza you will never wolf alone (quill blu)</option>
-            </select><br>
+            <label for="items">Items:</label>
+            <input type="text" name="entry.items" id="items" required readonly><br>
 
-            <label for="delivery">Domanda consegna:</label>
-            <select name="entry.223344556" id="delivery" required>
-                <option value="Si">Si</option>
-                <option value="No">No</option>
-            </select><br>
-
-            <label for="city">In che città ti trovi?</label>
-            <select name="entry.334455667" id="city" required>
-                <option value="Milano">Milano</option>
-                <option value="Torino">Torino</option>
-                <option value="Roma">Roma</option>
-                <option value="Napoli">Napoli</option>
-            </select><br>
-
-            <label for="payment">Metodo di pagamento:</label>
-            <select name="entry.445566778" id="payment" required>
-                <option value="Contanti">Contanti</option>
-                <option value="Paypal">Paypal</option>
-                <option value="Revolut">Revolut</option>
-                <option value="Satispay">Satispay</option>
-            </select><br>
+            <label for="total">Total:</label>
+            <input type="text" name="entry.total" id="total-field" required readonly><br>
 
             <label for="email">Email:</label>
             <input type="email" name="entry.556677889" id="email" required><br>
@@ -69,5 +74,6 @@
             <input type="submit" value="Invia">
         </form>
     </section>
+    <script src="scripts.js"></script>
 </body>
 </html>

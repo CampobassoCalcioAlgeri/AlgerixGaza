@@ -21,11 +21,30 @@ h2 {
     color: #4CAF50;
 }
 
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.product {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 1em;
+    width: 200px;
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
 form {
     display: flex;
     flex-direction: column;
 }
 
-label, input, select {
+label, input, select, button {
     margin: 0.5em 0;
 }
