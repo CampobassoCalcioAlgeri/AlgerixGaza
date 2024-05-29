@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Initiative</title>
+    <title>Iniziativa di Beneficenza</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Charity Initiative</h1>
-        <p>Support our cause by purchasing posters and sticker packs.</p>
+        <h1>Iniziativa di Beneficenza</h1>
+        <p>Supporta la nostra causa acquistando poster e pacchetti di adesivi.</p>
     </header>
     <section>
-        <h2>Products</h2>
+        <h2>Prodotti</h2>
         <div class="products">
             <div class="product" data-name="Poster 1" data-price="5">
                 <img src="poster1.png" alt="Poster 1">
                 <p>Poster 1: 5 Euro</p>
-                <button onclick="addToCart('Poster 1', 5)">Add to Cart</button>
+                <button onclick="addToCart('Poster 1', 5)">Aggiungi al Carrello</button>
             </div>
             <div class="product" data-name="Poster 2" data-price="5">
                 <img src="poster2.png" alt="Poster 2">
                 <p>Poster 2: 5 Euro</p>
-                <button onclick="addToCart('Poster 2', 5)">Add to Cart</button>
+                <button onclick="addToCart('Poster 2', 5)">Aggiungi al Carrello</button>
             </div>
             <div class="product" data-name="Poster 3" data-price="5">
                 <img src="poster3.png" alt="Poster 3">
                 <p>Poster 3: 5 Euro</p>
-                <button onclick="addToCart('Poster 3', 5)">Add to Cart</button>
+                <button onclick="addToCart('Poster 3', 5)">Aggiungi al Carrello</button>
             </div>
-            <div class="product" data-name="Sticker Pack" data-price="4">
-                <img src="stickerpack.jpg" alt="Sticker Pack">
-                <p>Sticker Pack: 4 Euro</p>
-                <button onclick="addToCart('Sticker Pack', 4)">Add to Cart</button>
+            <div class="product" data-name="Pacchetto Adesivi" data-price="4">
+                <img src="stickerpack.jpg" alt="Pacchetto Adesivi">
+                <p>Pacchetto Adesivi: 4 Euro</p>
+                <button onclick="addToCart('Pacchetto Adesivi', 4)">Aggiungi al Carrello</button>
             </div>
-            <div class="product" data-name="Bundle" data-price="7">
-                <img src="bundle.jpg" alt="Bundle">
-                <p>Bundle (Poster + Sticker Pack): 7 Euro</p>
-                <button onclick="addToCart('Bundle', 7)">Add to Cart</button>
+            <div class="product" data-name="Pacchetto" data-price="7">
+                <img src="bundle.jpg" alt="Pacchetto">
+                <p>Pacchetto (Poster + Pacchetto Adesivi): 7 Euro</p>
+                <button onclick="addToCart('Pacchetto', 7)">Aggiungi al Carrello</button>
             </div>
         </div>
     </section>
     <section>
-        <h2>Cart</h2>
-        <ul id="cart"></ul>
-        <p>Total: <span id="total">0</span> Euros</p>
-        <button onclick="checkout()">Proceed to Checkout</button>
+        <h2>Carrello</h2>
+        <ul id="cart" class="cart"></ul>
+        <p>Totale: <span id="total">0</span> Euro</p>
+        <button onclick="checkout()">Procedi al Checkout</button>
     </section>
     <section id="checkout-section" style="display: none;">
-        <h2>Order Form</h2>
+        <h2>Modulo d'Ordine</h2>
         <form id="order-form" action="https://docs.google.com/forms/d/e/1sc720upV5KaXQ8vIhL1A3oKm_QeNVSYte8XgUE50QAs/formResponse" method="POST" target="_self">
             <label for="name">Nome:</label>
             <input type="text" name="entry.123456789" id="name" required><br>
@@ -56,10 +56,10 @@
             <label for="surname">Cognome:</label>
             <input type="text" name="entry.987654321" id="surname" required><br>
 
-            <label for="items">Items:</label>
+            <label for="items">Articoli:</label>
             <input type="text" name="entry.items" id="items" required readonly><br>
 
-            <label for="total">Total:</label>
+            <label for="total">Totale:</label>
             <input type="text" name="entry.total" id="total-field" required readonly><br>
 
             <label for="email">Email:</label>
@@ -68,7 +68,7 @@
             <label for="phone">Telefono:</label>
             <input type="tel" name="entry.667788990" id="phone" required><br>
 
-            <label for="instagram">Instagram (optional):</label>
+            <label for="instagram">Instagram (opzionale):</label>
             <input type="text" name="entry.778899001" id="instagram"><br>
 
             <input type="submit" value="Invia">

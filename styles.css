@@ -40,6 +40,45 @@ h2 {
     height: auto;
 }
 
+.product button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5em;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background-color: #45a049;
+}
+
+.cart {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart li {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 0.3em;
+    cursor: pointer;
+}
+
+.cart button:hover {
+    background-color: #e53935;
+}
+
 form {
     display: flex;
     flex-direction: column;
