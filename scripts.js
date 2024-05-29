@@ -1,6 +1,5 @@
 let cart = [];
 let total = 0;
-let hasItemsInCart = false;
 
 function addToCart(productName, productPrice) {
     const product = cart.find(item => item.name === productName);
@@ -11,7 +10,6 @@ function addToCart(productName, productPrice) {
     }
     total += productPrice;
     updateCartDisplay();
-    hasItemsInCart = true;
 }
 
 function removeFromCart(productName) {
@@ -23,25 +21,13 @@ function removeFromCart(productName) {
     updateCartDisplay();
 }
 
-function updateCartDisplay() {
-    const cartList = document.getElementById('cart');
-    cartList.innerHTML = '';
-    cart.forEach(item => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            ${item.name}: ${item.price} Euro x ${item.quantity}
-            <button onclick="removeFromCart('${item.name}')">Rimuovi</button>
-        `;
-        cartList.appendChild(li);
-    });
-    document.getElementById('total').textContent = total;
-    document.getElementById('items').value = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
-    document.getElementById('total-field').value = total;
-}
+
+
+
+
 
 function checkout() {
-    if (hasItemsInCart) {
-        document.getElementById('product-selection').style.display = 'none';
+    if (cart.length > 0) {
         document.getElementById('checkout-section').style.display = 'block';
     } else {
         alert("Il carrello è vuoto. Si prega di aggiungere almeno un prodotto prima di procedere al checkout.");
@@ -52,4 +38,4 @@ function submitOrder() {
     // Implementazione della logica di invio dell'ordine
 }
 
-// Initialize product buttons and other stuff...
+// Inizializzazione dei pulsanti dei prodotti e altri elementi...

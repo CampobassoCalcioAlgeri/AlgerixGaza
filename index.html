@@ -34,10 +34,20 @@
                 <p>Pacchetto Adesivi: 4 Euro</p>
                 <button onclick="addToCart('Pacchetto Adesivi', 4)">Aggiungi al Carrello</button>
             </div>
-            <div class="product" data-name="Pacchetto" data-price="7">
-                <img src="bundle.jpg" alt="Pacchetto">
-                <p>Pacchetto (Poster + Pacchetto Adesivi): 7 Euro</p>
-                <button onclick="addToCart('Pacchetto', 7)">Aggiungi al Carrello</button>
+            <div class="product" data-name="Pacchetto Poster 1 + Adesivi" data-price="7">
+                <img src="bundle1.png" alt="Pacchetto Poster 1 + Adesivi">
+                <p>Pacchetto Poster 1 + Adesivi: 7 Euro</p>
+                <button onclick="addToCart('Pacchetto Poster 1 + Adesivi', 7)">Aggiungi al Carrello</button>
+            </div>
+            <div class="product" data-name="Pacchetto Poster 2 + Adesivi" data-price="7">
+                <img src="bundle2.png" alt="Pacchetto Poster 2 + Adesivi">
+                <p>Pacchetto Poster 2 + Adesivi: 7 Euro</p>
+                <button onclick="addToCart('Pacchetto Poster 2 + Adesivi', 7)">Aggiungi al Carrello</button>
+            </div>
+            <div class="product" data-name="Pacchetto Poster 3 + Adesivi" data-price="7">
+                <img src="bundle3.png" alt="Pacchetto Poster 3 + Adesivi">
+                <p>Pacchetto Poster 3 + Adesivi: 7 Euro</p>
+                <button onclick="addToCart('Pacchetto Poster 3 + Adesivi', 7)">Aggiungi al Carrello</button>
             </div>
         </div>
     </section>
@@ -47,33 +57,102 @@
         <p>Totale: <span id="total">0</span> Euro</p>
         <button onclick="checkout()">Procedi al Checkout</button>
     </section>
-    <section id="checkout-section" style="display: none;">
-        <h2>Modulo d'Ordine</h2>
-        <form id="order-form" action="https://docs.google.com/forms/d/e/1sc720upV5KaXQ8vIhL1A3oKm_QeNVSYte8XgUE50QAs/formResponse" method="POST" target="_self">
-            <label for="name">Nome:</label>
-            <input type="text" name="entry.123456789" id="name" required><br>
-
-            <label for="surname">Cognome:</label>
-            <input type="text" name="entry.987654321" id="surname" required><br>
-
-            <label for="items">Articoli:</label>
-            <input type="text" name="entry.items" id="items" required readonly><br>
-
-            <label for="total">Totale:</label>
-            <input type="text" name="entry.total" id="total-field" required readonly><br>
-
-            <label for="email">Email:</label>
-            <input type="email" name="entry.556677889" id="email" required><br>
-
-            <label for="phone">Telefono:</label>
-            <input type="tel" name="entry.667788990" id="phone" required><br>
-
-            <label for="instagram">Instagram (opzionale):</label>
-            <input type="text" name="entry.778899001" id="instagram"><br>
-
-            <input type="submit" value="Invia">
-        </form>
-    </section>
+    
+    <!-- Aggiungiamo la textarea nascosta per il contenuto del carrello qui -->
+    <textarea id="cartContent" style="display: none;" readonly></textarea>
+    
     <script src="scripts.js"></script>
+    <section>
+        <h2>Carrello</h2>
+        <ul id="cart" class="cart"></ul>
+        <p>Totale: <span id="total">0</span> Euro</p>
+    </section>
+    
+    <!-- Textarea per il contenuto del carrello -->
+    <textarea id="cartContent" style="width: 100%; height: 100px;" readonly></textarea>
+    
+    <script src="scripts.js"></script>
+    <script>
+        // Funzione per aggiornare il contenuto della textarea con il contenuto del carrello
+        function updateCartTextarea() {
+            const cartContentTextarea = document.getElementById('cartContent');
+            const cartContent = cart.map(item => `${item.name}: ${item.price} Euro x ${item.quantity}`).join('\n');
+            cartContentTextarea.value = cartContent;
+        }
+
+        // Aggiorniamo la visualizzazione del carrello
+        updateCartDisplay = () => {
+            const cartList = document.getElementById('cart');
+            cartList.innerHTML = '';
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    ${item.name}: ${item.price} Euro x ${item.quantity}
+                    <button onclick="removeFromCart('${item.name}')">Rimuovi</button>
+                `;
+                cartList.appendChild(li);
+            });
+            document.getElementById('total').textContent = total;
+            // Aggiorniamo anche il contenuto della textarea
+            updateCartTextarea();
+        }
+    </script>
+    <!-- <section id="checkout-section" style="display: none;">
+        <h2>Checkout</h2>
+        <form action="https://docs.google.com/forms/d/12mKWXUbxTfB65uZm_8RlXiR4LumH3cfvH6RqV9sGX_E/prefill" method="POST" target="_self">
+            <h3>Informazioni di contatto</h3>
+            <p>* Indica una domanda obbligatoria</p>
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="entry.123456789" required><br>
+    
+            <label for="name">Nome *</label>
+            <input type="text" id="name" name="entry.987654321" required><br>
+    
+            <label for="surname">Cognome *</label>
+            <input type="text" id="surname" name="entry.876543219" required><br>
+    
+            <label for="purchase">Che cosa compri? Se vuoi prendere più di un pack alla volta aggiungilo nella sezione “Altro” grazie *</label>
+            <textarea id="purchase" name="entry.765432198" required></textarea><br>
+    
+            <label for="delivery">Faremo la consegna a mano a Cb durante Corpus Domini. Riesci a passare?*</label>
+            <input type="radio" id="yes" name="entry.432198765" value="Si" required>
+            <label for="yes">Si</label>
+            <input type="radio" id="no" name="entry.432198765" value="No">
+            <label for="no">No</label><br>
+    
+            <label for="city">Purtroppo siamo presenti solo nelle città in lista e non siamo ancora cazzi di gestire delle spedizioni
+                Tuttavia se rimane del materiale e sei presente in una di queste città lasciaci il tuo contatto che ci farebbe piacere se partecipassi ugualmente!In che città ti trovi?*</label>
+            <select id="city" name="entry.321987654" required>
+                <option value="Milano">Milano</option>
+                <option value="Torino">Torino</option>
+                <option value="Roma">Roma</option>
+                <option value="Napoli">Napoli</option>
+            </select><br>
+    
+            <label for="instagram">Account insta? Metti il tag che ci viene comodo, grazie compa’ *</label>
+            <input type="text" id="instagram" name="entry.219876543" required><br>
+    
+            <h3>Come vuoi pagare?</h3>
+            <input type="radio" id="cash" name="entry.109876543" value="Contanti" required>
+            <label for="cash">Contanti</label><br>
+            <input type="radio" id="paypal" name="entry.109876543" value="Paypal">
+            <label for="paypal">Paypal</label><br>
+            <input type="radio" id="revolut" name="entry.109876543" value="Revolut">
+            <label for="revolut">Revolut</label><br>
+            <input type="radio" id="satispay" name="entry.109876543" value="Satispay">
+            <label for="satispay">Satispay</label><br>
+    
+            <button type="submit">Invia</button>
+        </form>
+    </section> -->
+
+
+    
+    
+    <script src="scripts.js"></script>
+
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSedTKbNndlDzSFM9GyWt5nC0w2V1Dr4I9q1zGYnNOJUlav2xw/viewform?embedded=true" width="640" height="933" frameborder="0" marginheight="0" marginwidth="0">Caricamento…</iframe>
+
+
 </body>
 </html>
